@@ -2,15 +2,51 @@
 @tailwind components;
 @tailwind utilities;
 
-.perspective-1000 {
-  perspective: 1000px;
+/* Global Layout Resets */
+html, body, #root {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  user-select: none;
 }
-.preserve-3d {
-  transform-style: preserve-3d;
+
+/* Wavy underline decoration from Serendipity Poster */
+.wavy-accent {
+  text-decoration: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: #f59e0b;
+  text-underline-offset: 6px;
 }
-.backface-hidden {
-  backface-visibility: hidden;
+
+/* 3D Floating Lantern Vector Path Animation */
+@keyframes lanternRise {
+  0% {
+    transform: translateY(105vh) translateX(0px) scale(0.85) rotate(0deg);
+    opacity: 0;
+  }
+  8% {
+    opacity: 1;
+    transform: translateY(90vh) translateX(calc(var(--drift-x) * 0.1)) scale(0.9) rotate(2deg);
+  }
+  50% {
+    transform: translateY(50vh) translateX(calc(var(--drift-x) * 0.5)) scale(1) rotate(-3deg);
+  }
+  90% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(-20vh) translateX(var(--drift-x)) scale(1.1) rotate(4deg);
+    opacity: 0;
+  }
 }
-.rotate-y-180 {
-  transform: rotateY(180deg);
+
+.animate-lantern {
+  animation: lanternRise 16s linear forwards;
+}
+
+.font-serif-display {
+  font-family: 'Cinzel', serif;
 }
